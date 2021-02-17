@@ -114,7 +114,7 @@ Sample application designed to show how the Spring application frameworks can be
 * Use private variables with getters and seters - ONLY when you need them
 * Use abstract base classes
 
-### 3. Liskob Substitution Principle
+### 3. Liskov Substitution Principle
 ```If it looks like a duck, quaks like a duck, but needs batteries - You probably have the wrong abstraction```
 
 * By Barbara Liskov in 1998
@@ -144,6 +144,76 @@ Sample application designed to show how the Spring application frameworks can be
 * The SOLID Principles of OOP will lead you to better quality code
 * Your code will be more testable and easier to maintain
 * A key theme is avoiding tight coupling in your code
+
+
+
+## Dependency Injection
+
+* A needed dependency is injected by another object
+
+* Annotation used in Spring to indicate you want a dependency injected --> `@Autowired`
+
+### Types of Dependency Injection:
+
+* By Class Properties --> not preferred
+* By Setters --> Area of much debate
+* By Constructor --> Most Preferred
+
+### Concrete Class vs Interfaces
+
+Dependency Injection can be done by either concrete class or via Interfaces. `Dependency Injection using Interfaces` is most preferred.
+
+
+### Inversion of Control (IOC)
+
+Technique to allow dependencies to be injected at runtime. Control is done by the framework i.e., Spring.
+
+### Inversion of Control vs Dependency Injection
+
+* IoC and DI are easily confused
+* DI refers much to the composition of your class
+* IOC is the runtime environment of your code (i.e., Spring Framework's IoC Container)
+* Spring is in control of the injection of dependencies
+
+`Dependency Inversion` addresses `abstractions`, while `Dependency Injection` refers to the injection of dependencies into a Class.
+
+### Best Practices:
+
+* Use `Constructor` injection over `Setter` injection
+* Use `final` properties for injected components
+* Whenever practical, code to an interface
+
+### Qualifiers
+The qualifier annotation helps disambiguate bean references when Spring would otherwise not be able to do so.
+
+It's an annotation used to connect a controller to a specific Service(Business Logic) if there's multiple services and Spring cannot identify which Service should the Controller call.
+
+### Bean
+In Spring, the objects that form the backbone of your application and that are managed by the Spring IoC container are called beans. A bean is an object that is instantiated, assembled, and otherwise managed by a Spring IoC container.
+
+`Primary Bean` is used in Services to mark it as a primary service to use if there's multiple services and your main application fails to identify which service to call.
+
+### Spring Profiles
+
+Default Profile: `@Profile({"XYZ", "default"})`
+
+
+### Spring Bean Lifecycle
+
+Two callback interfaces you can implement to tap into the bean lifecycle:
+
+1. InitializingBean
+2. DisposableBean
+
+Two annotations used to access the Spring Bean Lifecycle:
+
+1. `@PostConstruct`
+2. `@PreDestroy`
+
+`Q`. How do you specify a bean name you want injected?
+
+`Ans`. @Qualifier
+
 
 
 
