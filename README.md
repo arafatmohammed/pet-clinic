@@ -12,7 +12,7 @@ POJO : Plain Old Java Objects
 Entity Relationship Diagram
 
 
-To model relations --> start.jhipstres.tech/jdl-studio/
+To com.amdcloudguru.petclinic.model relations --> start.jhipstres.tech/jdl-studio/
 
 ```
 *_* --> many-to-many relationship
@@ -47,7 +47,7 @@ Copy the JDBC connect string from the Spring Console when you ru the app.
 
 ### Spring MVC
 
-Spring uses a model called Spring MVC, stands for Model, View, and Controller.
+Spring uses a com.amdcloudguru.petclinic.model called Spring MVC, stands for Model, View, and Controller.
 
 It is a common design pattern, dates back to 70s developed by a Xerox Engineer.
 
@@ -215,5 +215,7 @@ Two annotations used to access the Spring Bean Lifecycle:
 `Ans`. @Qualifier
 
 
+### Multi-Module Project for Data Model
 
+Data Model - Hibernate & JPA
 
