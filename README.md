@@ -219,3 +219,7 @@ Two annotations used to access the Spring Bean Lifecycle:
 
 Data Model - Hibernate & JPA
 
+### Difference between super() and this() in java
+
+`super()` as well as `this()` both are used to make constructor calls. `super()` is used to call Base class’s constructor(i.e, Parent’s class) while `this()` is used to call current class’s constructor.
+
