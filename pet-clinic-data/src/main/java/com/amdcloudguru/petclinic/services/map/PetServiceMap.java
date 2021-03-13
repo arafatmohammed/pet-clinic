@@ -1,11 +1,11 @@
 package com.amdcloudguru.petclinic.services.map;
 
 import com.amdcloudguru.petclinic.model.Pet;
-import com.amdcloudguru.petclinic.services.CrudService;
+import com.amdcloudguru.petclinic.services.PetService;
 
 import java.util.Set;
 
-public class PetServiceMap extends AbstractMapService<Pet, Long> implements CrudService<Pet, Long> {
+public class PetServiceMap extends AbstractMapService<Pet, Long> implements PetService {
 
     @Override
     public Set<Pet> findAll() {

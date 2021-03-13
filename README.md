@@ -223,3 +223,99 @@ Data Model - Hibernate & JPA
 
 `super()` as well as `this()` both are used to make constructor calls. `super()` is used to call Base class’s constructor(i.e, Parent’s class) while `this()` is used to call current class’s constructor.
 
+### Spring Configuration Options
+
+1. `XML Based Configuration` (Introduced in SpringBoot V2 and still used in V5)
+
+- Common in legacy Spring Applications
+- Still supported in Spring Framework 5.X
+
+
+2. `Annotation Based Configuration`
+- Introduced in Spring Framework 3.0
+- Picked up via 'Component Scans'
+- Refers to class level annotations
+- @Controller, @Service, @Component, @Repository
+
+3. `Java Based Configuration`
+- Introduced in Spring Framework 3.0
+- Uses Java Classes to define Spring Beans
+- Configuration classes are defined with @Configuration annotaton
+- Beans are declared with @Bean annotation - bring Spring components in context
+
+4. `Groovy Bean Definition DSL Configuration`
+- DSL (Domain Specific Language)
+- Introduced in Spring Framework 4.0
+- Allows you to declare beans in Groovy
+- Borrowed from Grails
+
+### Which Configuration option to use?
+
+- You can use combination of all methods
+- They will work seamlessly together to define beans in Spring Context
+- Industry trend is to favor Java based configuration
+
+
+### Spring Framework Stereotypes
+
+- Stereotype - a fixed general image or set of characteristics which represent a particular type of person or thing.
+- Spring Stereotypes are used to define Spring Beans in the Spring context
+- Available Stereotypes - @Component, @Controller, @RestController, @Repository (access Data Layer), @Service (Backing up usually a Controller)
+
+### Spring Bean Scopes
+
+1. `Singleton` (default) Only one instance of the bean is creating in the IoC container
+
+2. `Prototype` - A new instance is created each time the bean is requested
+
+3. `Request` - A single instance per http request. Only valid in the context of a web-aware Spring ApplicationContext.
+
+4. `Context` -  A single instance per http session. Only valid in the context of a web-aware Spring ApplicationContext.
+
+5. `Global-session` - A single instamce per global session. Typically Only used in a Portlet context. Only valid in the context of a web-aware Spring ApplicationContext.
+
+6. `Application` - Bean is scoped to the lifecycle of a ServletContext. Only valid in the context of a web aware.
+
+7. `Websocket` - Scopes a single bean definition to the lifecycle of a WebSocket. Only valid in the context of a web-aware Spring ApplicationContext.
+
+`Custom Scope` - Spring Scopes are extensible, and you can define your own scop by implementing Spring's "Scope" interface. You will almost never create one.
+
+You cannot override Singleton scope, spring will stop you from that. You do not need declaration for singleton scope. In Java configuration use @Scope annotation for any other scopes you want to use.
+
+---------------------
+### Spring Framework Stereotypes :
+
+There is no difference between `@Service` and `@Component`
+
+`@RestController` :  Convenience annotation representing @Controller and @ResponseBody - Used for writing REST APIs
+
+
+--- 
+`@Component`: Indicates that an annotated class is a "component" and it will be created as a bean
+`@Controller`: Indicates that an annotated class has the role of a Spring MVC "Controller"
+`@RestController`: Convenience Annotation which extends @Controller, and adds @ResponseBody
+`@Repository`: Indicates class is a "Repository", originally defined by Domain-Driven Design (Evas, 2003) as "a mechanism for encapsulation storage, retrieval, and search behavior which emulates a collection of objects"
+`@Service`: Indicates that an annotated class is a "Service", originally defined by Domain-Driven Design(Evans, 2003) as "an operation offered as an interface that stands alone in the model, with no encapsulated state."
+
+
+#### Spring Component Scan
+
+1. Spring Beans defined with Spring Stereotypes are detected with Spring component scan
+2. On startup Spring is told to scan packages for classes with Spring Stereotype annotations
+3. This configuration is Spring Framework specific, NOT Spring Boot
+4. Spring Boot's auto configuration will tell Spring to perform a component scan of the package of the main class
+    - This includes all sub packages of the main class package
+5. When using Spring Boot, if clas is outside of the main class package tree, you must declare the package scan
+
+
+### Java Based Configuration
+
+Instead of using @Service in a class name as Spring Annotation for `Annotation Based Configuration`, we can create a `config` and annotate it with @Configuration and create beans with @Bean annotation and their names will be the Class names of the Service class you just removed @Service annotation from. 
+
+
+### Load Data
+
+`Spring Boot Method`: 
+```
+implements CommandLineRunner
+```
