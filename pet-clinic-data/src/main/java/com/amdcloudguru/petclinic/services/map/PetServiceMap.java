@@ -2,9 +2,12 @@ package com.amdcloudguru.petclinic.services.map;
 
 import com.amdcloudguru.petclinic.model.Pet;
 import com.amdcloudguru.petclinic.services.PetService;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
+
+@Service
 public class PetServiceMap extends AbstractMapService<Pet, Long> implements PetService {
 
     @Override
